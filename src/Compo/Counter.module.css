@@ -1,0 +1,31 @@
+.counter {
+    margin: 5rem auto;
+    box-shadow: 0 10px 9px rgba(0, 0, 0, 0.2);
+    width: 40rem;
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    background-color: #f4f0fa;
+  }
+  
+  .counter h1 {
+    text-transform: uppercase;
+    color: #000000;
+    margin: 0;
+    font-size: 1.3rem;
+  }
+  
+  .value {
+    font-size: 2rem;
+    color: #3c0080;
+    margin: 2rem 0;
+    font-weight: bold;
+  }
+  
+  .button{
+    background-color: #3c0080;
+    color: white;
+    font-size: 1.3rem;
+    padding: 0.5rem 0.9rem;
+    border-radius: 0.5rem;
+  }
