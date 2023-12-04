@@ -15,6 +15,7 @@
     font-size: 1.3rem;
   }
   
+  
   .value {
     font-size: 2rem;
     color: #3c0080;
@@ -29,3 +30,25 @@
     padding: 0.5rem 0.9rem;
     border-radius: 0.5rem;
   }
+ .inFive{
+  background-color: #3c0080;
+  color: white;
+  font-size: 1.3rem;
+  padding: 0.5rem 0.9rem;
+  border-radius: 0.5rem;
+ }
+ .inTen{
+  background-color: #3c0080;
+  color: white;
+  font-size: 1.3rem;
+  padding: 0.5rem 0.9rem;
+  border-radius: 0.5rem;
+ }
+ .Dec{
+  background-color: #3c0080;
+  color: white;
+  font-size: 1.3rem;
+  padding: 0.5rem 0.9rem;
+  border-radius: 0.5rem;
+ }
+ 
