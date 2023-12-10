@@ -2,11 +2,13 @@
     background-color: transparent;
     border-color: #1ad1b9;
     color: #1ad1b9;
+    margin-right: 8.6rem ;
   }
   
   .button:hover,
   .button:active {
     color: white;
+   
   }
   
   .button span {
