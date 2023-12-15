@@ -1,21 +1,25 @@
+// Notification.js
+
+import React from 'react';
 import classes from './Notification.module.css';
 
 const Notification = (props) => {
-  let specialClasses = '';
+  const { status, title, message } = props;
 
-  if (props.status === 'error') {
-    specialClasses = classes.error;
-  }
-  if (props.status === 'success') {
-    specialClasses = classes.success;
-  }
+  let statusClasses = '';
 
-  const cssClasses = `${classes.notification} ${specialClasses}`;
+  if (status === 'success') {
+    statusClasses = classes.success;
+  } else if (status === 'error') {
+    statusClasses = classes.error;
+  } else if (status === 'pending') {
+    statusClasses = classes.pending;
+  }
 
   return (
-    <section className={cssClasses}>
-      <h2>{props.title}</h2>
-      <p>{props.message}</p>
+    <section className={`${classes.notification} ${statusClasses}`}>
+      <h2>{title}</h2>
+      <p>{message}</p>
     </section>
   );
 };
