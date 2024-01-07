@@ -1,9 +1,33 @@
+const redux = require('redux');
 
-import {  configureStore } from '@reduxjs/toolkit';
-import uiSlice from './ui-slice';
-import cartSlice from './cart-slice';
+const counterReducer = (state = { counter: 0 }, action) => {
+  switch (action.type) {
+    case 'increment':
+      return {
+        counter: state.counter + 1
+      };
+    case 'decrement':
+      return {
+        counter: state.counter - 1
+      };
+    default:
+      return state;
+  }
+};
 
-const store = configureStore({
-  reducer: { ui: uiSlice.reducer, cart: cartSlice.reducer }
-});
-export default store;
+const store = redux.createStore(counterReducer);
+
+console.log(store.getState());
+
+const counterSubscriber = () => {
+  const latestState = store.getState();
+  console.log(latestState);
+};
+
+store.subscribe(counterSubscriber);
+
+for (let i = 0; i < 5; i++) {
+  store.dispatch({ type: 'increment' });
+}
+
+store.dispatch({ type: 'decrement' });
