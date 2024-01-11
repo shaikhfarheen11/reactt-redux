@@ -6,6 +6,9 @@ import { Fragment, useEffect } from 'react';
 import { uiActions } from './store/ui-slice';
 import Notification from './Compo/UI/Notification';
 
+
+let isInitial = true;
+
 function App() {
   const dispatch = useDispatch();
   const showCart = useSelector((state) => state.ui.cartIsVisible);
@@ -22,7 +25,7 @@ function App() {
         })
       );
      const response = await fetch(
-      'https://react-hp-325a3-default-rtdb.firebaseio.com/cart.json', {
+      'https://react-hp-325a3-default-rtdb.firebaseio.com/cart', {
     method: 'PUT',
     body: JSON.stringify(cart),
   }
@@ -41,7 +44,11 @@ function App() {
     })
   );
 };
-sendCartData().catch(error => {
+if (isInitial) {
+  isInitial = false;
+  return;
+}
+sendCartData().catch((error) => {
   dispatch(
     uiActions.showNotification({
       status: 'error',
