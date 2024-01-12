@@ -9,42 +9,39 @@ const ProductItem = (props) => {
 
   const { title, price, description, id } = props;
 
-  const addToCartHandler = () => { 
-    const newTotalQuantity = cart.totalQuantity + 1;
-
-    const updatedItems = cart.items.slice();
+  const addToCartHandler = () => {
+    const newTotalQuantity = (cart.totalQuantity || 0) + 1;
+  
+    // Check if cart.items is defined, if not, initialize it as an empty array
+    const updatedItems = (cart.items || []).slice();
+  
     const existingItem = updatedItems.find((item) => item.id === id);
-    if(existingItem){
+    
+    if (existingItem) {
       const updatedItem = { ...existingItem };
       updatedItem.quantity++;
       updatedItem.price = updatedItem.price + price;
-      const existingItemIndex = updatedItems.findIndex(
-      (item) => item.id === id
-      );
+      
+      const existingItemIndex = updatedItems.findIndex((item) => item.id === id);
       updatedItems[existingItemIndex] = updatedItem;
-        }
-        else{
-          updatedItems.push({
-            id: id,
-            price: price,
-            quantity: 1,
-            totalPrice: price,
-            name: title,
-          });
-        }
-        const newCart = {
-          totalQuantity: newTotalQuantity,
-          items: updatedItems,
-        };
-        dispatch(cartActions.replaceCart(newCart));
-      // dispatch(
-      //   cartActions.addItemToCart({
-      //       id,
-      //       title,
-      //       price,
-      //   })
-      // );
+    } else {
+      updatedItems.push({
+        id: id,
+        price: price,
+        quantity: 1,
+        totalPrice: price,
+        name: title,
+      });
+    }
+  
+    const newCart = {
+      totalQuantity: newTotalQuantity,
+      items: updatedItems,
+    };
+  
+    dispatch(cartActions.replaceCart(newCart));
   };
+  
   return (
     <li className={classes.item}>
       <Card>
